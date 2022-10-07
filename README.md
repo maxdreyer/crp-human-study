@@ -3,6 +3,8 @@
 This is the repository for the human study of the Concept-Relevance-Propagation (CRP) paper:
 Achtibat, Reduan, et al. "[From" Where" to" What": Towards Human-Understandable Explanations through Concept Relevance Propagation.](https://arxiv.org/pdf/2206.03208)" (2022).
 
+The CRP explanations used in this study are based on the [official CRP implementation for PyTorch](https://github.com/rachtibat/zennit-crp).
+
 We have three models trained on ImageNet: 
 1. vgg16 (standard torchvision pretrained),
 2. vgg16_corrupted (trained on border artifact for 30 classes) and
