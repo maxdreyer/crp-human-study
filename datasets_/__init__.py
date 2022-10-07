@@ -5,9 +5,6 @@ import torch
 import torch.utils.data
 from torch.utils.data import Dataset
 
-from datasets_.adience_dataset import get_adience_dataset_unique
-from datasets_.birds_2011 import bird_classification_dataset_train, bird_classification_dataset_test
-from datasets_.feathers import feathers_train, feathers_test
 from datasets_.imagenet import imagenet_train, imagenet_test
 from datasets_.imagenet_corrupted import imagenet_corrupted_train, imagenet_corrupted_test
 
