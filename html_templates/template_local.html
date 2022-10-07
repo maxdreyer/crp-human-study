@@ -1,0 +1,96 @@
+<!-- You must include this JavaScript file -->
+<script src="https://assets.crowd.aws/crowd-html-elements.js"></script>
+
+<style>
+    .wrapper {
+        display: flex;
+        max-width: 1000px;
+    }
+    .right {
+        width: 60%;
+        padding: 0em 2em;
+    }
+    .left {
+        width: 40%;
+        padding: 0em 2em;
+    }
+</style>
+
+<!-- For the full list of available Crowd HTML Elements and their input/output documentation,
+      please refer to https://docs.aws.amazon.com/sagemaker/latest/dg/sms-ui-template-reference.html -->
+
+<!-- You must include crowd-form so that your task submits answers to MTurk -->
+<crowd-form answer-format="flatten-objects">
+
+    <crowd-instructions link-text="View instructions" link-type="button">
+    <short-summary>
+        <h3>Explaining Artificial Intelligence</h3>
+      <p>
+        You will be presented with input images in which objects are detected by an Artificial Intelligence (AI) model.
+        For each prediction, an explanation is presented.
+        The first 2 example explanations are for you to get familiar with the explanations.
+        </p>
+      <p>
+        For the latter 14 images, please study the given explanations and rate their insightfulness for your understanding of the model behavior.
+      </p>
+      <p>
+          In section "Detailed Instruction" you will find further relevant information about the task.
+      </p>
+    </short-summary>
+
+    <detailed-instructions>
+      <h3>Explaining Artificial Intelligence</h3>
+
+        <p>
+        AI or Artificial Intelligence is a subfield within computer science associated with constructing machines that can simulate human intelligence.
+        Various kinds of AI models (algorithms) can be applied to solve complex problems with high accuracy and small costs.
+        Their advantages, however, come with the price of low transparency in their decision making.
+        In order to improve our understanding of these AI models, several methods for explaining AI predictions have been developed.
+        In this survey, you will see explanations of one specific method and rate their added value to model understanding.
+        </p>
+        <p>
+        We focus in the following on AI models that work with image data.
+        Given an image, the model outputs a class name that it believes corresponds to the image.
+        As an example, this can be the class "cat" for an image of a cat.
+        To improve model transparency, one approach is to compute so-called heatmaps.
+        In such heatmaps, one can see which pixels were especially relevant for or against a prediction outcome.
+        Pixels with a positive impact on the prediction outcome are indicated by red color,
+        irrelevant pixels by white color, and pixels contradicting the prediction outcome by blue color.
+        How to read the colors is also shown in the color map below.
+        <div style="width: 100%; text-align: center; margin-top: 2em; margin-bottom: 2em;">
+        <img src="https://datacloud.hhi.fraunhofer.de/apps/files_sharing/publicpreview/9fgxQMmF5KkgQTr?file=/instruction_images/read_color_map.png&x=2560&y=1440&a=true" style="height: auto; width: 650; margin: 0 auto;"/>
+        </div>
+        An example heatmap for the prediction of a sloth bear is shown below, where most relevance is located on the bear's head.
+        </p>
+        <div style="width: 100%; text-align: center;">
+        <img src="https://datacloud.hhi.fraunhofer.de/apps/files_sharing/publicpreview/9fgxQMmF5KkgQTr?file=/instruction_images/local_heatmap_example.png&x=2560&y=1440&a=true" style="height: auto; width: 600; margin: 0 auto;"/>
+        </div>
+        <p>
+        Studying heatmaps and utilized concepts can help in identifying suspicious and unexpected behaviors of the model, as shown below.
+        In below example, the heatmap indicates, that most relevance lies on the word in the bottom left part of the image.
+        This is an unexpected (and undesired) model behavior, as the actual object (the bear) is barely relevant for the prediction.
+        </p>
+        <div style="width: 100%; text-align: center;">
+        <img src="https://datacloud.hhi.fraunhofer.de/apps/files_sharing/publicpreview/9fgxQMmF5KkgQTr?file=/instruction_images/local_heatmap_bad_model.png&x=2560&y=1440&a=true" style="height: auto; width: 600; margin: 0 auto;"/>
+        </div>
+    </detailed-instructions>
+
+    <positive-example>
+      </p>
+        <div style="width: 100%; text-align: center;">
+        <img src="https://datacloud.hhi.fraunhofer.de/apps/files_sharing/publicpreview/9fgxQMmF5KkgQTr?file=/instruction_images/local_good_example.png&x=2560&y=1440&a=true" style="height: auto; width: 350; margin: 0 auto;"/>
+        </div>
+      <p>In the example on the left, the heatmap illustrates, that the model focuses strongly on the head of the bear for the prediction-making.</p>
+    </positive-example>
+
+    <negative-example>
+      </p>
+        <div style="width: 100%; text-align: center;">
+        <img src="https://datacloud.hhi.fraunhofer.de/apps/files_sharing/publicpreview/9fgxQMmF5KkgQTr?file=/instruction_images/local_bad_example.png&x=2560&y=1440&a=true" style="height: auto; width: 350; margin: 0 auto;"/>
+        </div>
+      <p>Contrary, in the example on the right, the model does not focus strongly on the bear, but on the lettering in the bottom left of the image.
+        This indicates a suspicious model behavior, as unexpected features are used.</p>
+    </negative-example>
+  </crowd-instructions>
+
+</crowd-form>

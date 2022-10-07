@@ -1,0 +1,118 @@
+<!-- You must include this JavaScript file -->
+<script src="https://assets.crowd.aws/crowd-html-elements.js"></script>
+
+<style>
+    .wrapper {
+        display: flex;
+        max-width: 1400px;
+    }
+    .right {
+        width: 40%;
+        padding: 0em 2em;
+    }
+    .left {
+        width: 60%;
+        padding: 0em 2em;
+    }
+</style>
+
+<!-- For the full list of available Crowd HTML Elements and their input/output documentation,
+      please refer to https://docs.aws.amazon.com/sagemaker/latest/dg/sms-ui-template-reference.html -->
+
+<!-- You must include crowd-form so that your task submits answers to MTurk -->
+<crowd-form answer-format="flatten-objects">
+
+  <crowd-instructions link-text="View instructions" link-type="button">
+    <short-summary>
+        <h3>Explaining Artificial Intelligence</h3>
+      <p>
+        You will be presented with input images in which objects are detected by an Artificial Intelligence (AI) model.
+        For each prediction, an explanation is presented.
+        The first 2 example explanations are for you to get familiar with the explanations.
+        </p>
+      <p>
+        For the latter 14 images, please study the given explanations and rate their insightfulness for your understanding of the model behavior.
+      </p>
+      <p>
+          In section "Detailed Instruction" you will find further relevant information about the task.
+      </p>
+    </short-summary>
+
+    <detailed-instructions>
+      <h3>Explaining Artificial Intelligence</h3>
+
+        <p>
+        AI or Artificial Intelligence is a subfield within computer science associated with constructing machines that can simulate human intelligence.
+        Various kinds of AI models (algorithms) can be applied to solve complex problems with high accuracy and small costs.
+        Their advantages, however, come with the price of low transparency in their decision making.
+        In order to improve our understanding of these AI models, several methods for explaining AI predictions have been developed.
+        In this survey, you will see explanations of one specific method and rate their added value to model understanding.
+        </p>
+        <p>
+        We focus in the following on AI models that work with image data.
+        Given an image, the model outputs a class name that it believes corresponds to the image.
+        As in the example below, this can be the class "cheetah" for an image of a cheetah.
+        </p>
+        <div style="width: 100%; text-align: center; margin-top: 1em; margin-bottom: 1em;">
+        <img src="https://datacloud.hhi.fraunhofer.de/apps/files_sharing/publicpreview/9fgxQMmF5KkgQTr?file=/instruction_images/model_prediction.png&x=2560&y=1440&a=true" style="height: auto; width: 600; margin: 0 auto;"/>
+        </div>
+        <p>
+        In order to perceive the cheetah, the model might have learned and used several concepts such as "dotted fur pattern" or "wildcat face", as illustrated below.
+        However, these concepts are not communicated by the model and we need a method to reveal and understand the concepts.
+        </p>
+        <div style="width: 100%; text-align: center; margin-top: 1em; margin-bottom: 1em;">
+        <img src="https://datacloud.hhi.fraunhofer.de/apps/files_sharing/publicpreview/9fgxQMmF5KkgQTr?file=/instruction_images/concept_based_prediction.png&x=2560&y=1440&a=true" style="height: auto; width: 600; margin: 0 auto;"/>
+        </div>
+        <p>
+
+        In the following, a concept-based explanation by the explainability method is shown.
+        Here, the most relevant of many concepts for the model's prediction of the cheetah is shown.</p>
+
+        <div style="width: 100%; text-align: center; margin-top: 1em; margin-bottom: 1em;">
+        <img src="https://datacloud.hhi.fraunhofer.de/apps/files_sharing/publicpreview/9fgxQMmF5KkgQTr?file=/instruction_images/concept_based_explanation.png&x=2560&y=1440&a=true" style="height: auto; width: 750; margin: 0 auto;"/>
+        </div>
+        <p>
+        In order to understand the explanation,
+        we
+        <ol>
+            <li>first look at the "heatmap" and "masked input" to localize the concept in the image.
+            The concept-specific heatmap depicts which pixels were especially relevant for or against a prediction.
+            Pixels with a positive impact on the prediction are indicated by red color, irrelevant pixels by white color, and pixels contradicting the prediction by blue color.
+            In the masked input image, only the for the concept important image areas are shown.</li>
+            <li>The "images sharing the concept" visualize examples of the learned concept, and should be used to interpret the meaning of a concept. On the right, a suggestion for the concept meaning is given.</li>
+            <li>Putting together all information, one can arrive at an interpretation of the model behavior.
+              Here, it is also interesting to note the relevance value (in percent) of each concept on the left.
+            This value indicates the relative importance of this particular concept to the overall prediction of this image.</li>
+        </ol>
+
+        <p>
+        Studying the utilized concepts can help in identifying suspicious and unexpected behaviors of the model, as shown below.
+        Here, the explanation indicates, that the model uses a "lettering" concept (applied as a watermark over the image) to detect the safe,
+        however there should not be a link between the lettering (watermark) and the safe.
+        This is an unexpected (and undesired) model behavior, as the actual object (the safe) is not targeted.
+        </p>
+        <div style="width: 100%; text-align: center;">
+        <img src="https://datacloud.hhi.fraunhofer.de/apps/files_sharing/publicpreview/9fgxQMmF5KkgQTr?file=/instruction_images/concept_based_explanation_bad_model.png&x=2560&y=1440&a=true" style="height: auto; width: 750; margin: 0 auto;"/>
+        </div>
+    </detailed-instructions>
+
+    <positive-example>
+      </p>
+        <div style="width: 100%; text-align: center;">
+        <img src="https://datacloud.hhi.fraunhofer.de/apps/files_sharing/publicpreview/9fgxQMmF5KkgQTr?file=/instruction_images/concept_based_good_example.png&x=2560&y=1440&a=true" style="height: auto; width: 400; margin: 0 auto;"/>
+        </div>
+      <p>In the example on the left, the 'black fur' concept corresponds to the black fur of the detected sloth bear, which is not indicating a suspicious model behavior.</p>
+    </positive-example>
+
+    <negative-example>
+      </p>
+        <div style="width: 100%; text-align: center;">
+        <img src="https://datacloud.hhi.fraunhofer.de/apps/files_sharing/publicpreview/9fgxQMmF5KkgQTr?file=/instruction_images/concept_based_bad_example.png&x=2560&y=1440&a=true" style="height: auto; width: 400; margin: 0 auto;"/>
+        </div>
+      <p>Contrary, in the example on the right, the model does not focus strongly on the detected safe, but on the lettering in the center of the image.
+        This indicates a suspicious model behavior, as unexpected features are used.</p>
+    </negative-example>
+
+  </crowd-instructions>
+
+</crowd-form>
