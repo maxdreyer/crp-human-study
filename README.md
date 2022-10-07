@@ -8,9 +8,13 @@ We have three models trained on ImageNet:
 2. vgg16_corrupted (trained on border artifact for 30 classes) and
 3. vgg16_uncorrupted (trained on border artifact for all classes).
 
-in directory ./scripts/ there are several .sh files for running experiments.
+Model checkpoints can be found [here](https://datacloud.hhi.fraunhofer.de/s/iExrEprxtJ5g38A).
+
+In directory ./scripts/ there are several .sh files for running experiments.
 - run_prepare_crp.sh to run analysis run for crp
 - run_all.sh to run all methods for the samples given
+
+Code is tested with Python 3.8.10. Required packages are listed in requirements.txt.
 
 Please note the HTML template files for amazon mechanical turk as well as instructory images in directory ./html_templates. 
 Study results are in .csv format in ./results/csv/ where _T or _F indicates the answers for the corrupted and uncorrupted model, respectively.
