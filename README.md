@@ -18,8 +18,8 @@ In directory ./scripts/ there are several .sh files for running experiments.
 
 Code is tested with Python 3.8.10. Required packages are listed in requirements.txt.
 
-Please note the HTML template files for amazon mechanical turk as well as instructory images in directory ./html_templates. 
+Please note the HTML template files for amazon mechanical turk as well as instructory images in directory ./html_templates/. 
 Study results are in .csv format in ./results/csv/ where _T or _F indicates the answers for the corrupted and uncorrupted model, respectively.
 
-Regarding the CRP explanations,
-concept labels are firstly predicted using [MILAN](https://github.com/evandez/neuron-descriptions) (Natural Language Descriptions of Deep Visual Features) (scripts located in ./utils/milan)
+Regarding the CRP explanation generation in ./experiments/crp_.py,
+concept labels are predicted using [MILAN](https://github.com/evandez/neuron-descriptions) (Natural Language Descriptions of Deep Visual Features) (package located in ./utils/milan)
